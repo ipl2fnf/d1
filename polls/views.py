@@ -3,14 +3,21 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.views import generic
 from django.utils import timezone
+import logging
 
+import django.utils
 from polls.models import Choice, Poll
 
-class IndexView(generic.ListView):
+logger = logging.getLogger(__name__)
+
+
+class IndexView(generic.ListView): 
+    logger.error('Something went wrong!')
     template_name = 'polls/index.html'
     context_object_name = 'latest_poll_list'
 
     def get_queryset(self):
+        logger.error('Something went wrong! bbbbbbbbbbbbbbb')
         """
         Return the last five published polls (not including those set to be
         published in the future).
